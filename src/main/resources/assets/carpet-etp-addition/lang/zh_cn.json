@@ -1,5 +1,5 @@
 {
   "carpet.rule.redStoneDontConnectToTrapDoor.desc": "让红石粉不连接活扳门",
   "carpet.rule.redStoneWireCanRunOnTrapDoor.desc": "让红石线不检测下方更新",
-  "carpet.rule.unExternPistonCanBeCompare.desc": "让比较器可以隔着完整活塞不伸出"
+  "carpet.rule.unExternPistonCanBeCompare.desc": "让比较器可以隔着完整活塞比较"
 }

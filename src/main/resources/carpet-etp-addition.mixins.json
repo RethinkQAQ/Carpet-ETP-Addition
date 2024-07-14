@@ -5,8 +5,9 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "rule.ComparatorBlockMixin",
-    "rule.noteblockskip.redstoneWireBlockMixin",
-    "rule.CrafterBlockMixin"
+    "rule.CrafterBlockMixin",
+    "rule.WitherSkullEntityMixin",
+    "rule.noteblockskip.redstoneWireBlockMixin"
   ],
   "client": [
   ],

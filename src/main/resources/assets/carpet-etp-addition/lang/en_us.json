@@ -2,5 +2,6 @@
   "carpet.rule.redStoneDontConnectToTrapDoor.desc": "none",
   "carpet.rule.redStoneWireCanRunOnTrapDoor.desc": "none",
   "carpet.rule.unExternPistonCanBeCompare.desc": "none",
-  "carpet.rule.CrafterCanQC.desc": "none"
+  "carpet.rule.CrafterCanQC.desc": "none",
+  "carpet.rule.WitherSkullWillDiscard.desc": "none"
 }

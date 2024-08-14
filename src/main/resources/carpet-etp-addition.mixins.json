@@ -7,6 +7,7 @@
     "rule.ComparatorBlockMixin",
     "rule.CrafterBlockMixin",
     "rule.WitherSkullEntityMixin",
+    "rule.InstantaneousRedstoneLamp.RedstoneLampBlockMixin",
     "rule.noteblockskip.redstoneWireBlockMixin"
   ],
   "client": [

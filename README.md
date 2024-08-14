@@ -1,4 +1,4 @@
-English | [简体中文](https://github.com/KathleenCome/Carpet-ETP-Addition/blob/master/README_CN.md)
+English | [简体中文](./README_CN.md)
 # Description
 This is a [carpet](https://github.com/gnembon/fabric-carpet) addition mod of ETP server
 

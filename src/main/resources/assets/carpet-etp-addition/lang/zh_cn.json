@@ -10,5 +10,7 @@
   "carpet.rule.unExternPistonCanBeCompare.desc": "让比较器可以隔着完整活塞比较",
   "carpet.rule.CrafterCanQC.desc": "让合成器可以QC激活",
   "carpet.rule.WitherSkullWillDiscard.desc": "让凋零头一定时间后消失",
-  "carpet.rule.InstantaneousRedstoneLamp.desc": "瞬时红石灯"
+  "carpet.rule.InstantaneousRedstoneLamp.desc": "瞬时红石灯",
+  "carpet.rule.targetBlockIgnoresProjectileHit.name": "标靶方块忽略投掷物",
+  "carpet.rule.targetBlockIgnoresProjectileHit.desc": "让标靶方块忽略投掷物，只作为引导红实线的作用"
 }

@@ -27,6 +27,9 @@ public class CarpetETPSettings {
     @Rule(categories = ETP)
     public static boolean InstantaneousRedstoneLamp = false;
 
+    @Rule(categories = {ETP, CREATIVE})
+    public static boolean targetBlockIgnoresProjectileHit = false;
+
     public static void onWorldLoadingStarted(){
         CarpetETP.LOGGER.info("CAT settings loading started");
     }

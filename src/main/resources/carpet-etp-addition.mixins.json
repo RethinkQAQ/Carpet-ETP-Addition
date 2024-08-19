@@ -8,7 +8,8 @@
     "rule.CrafterBlockMixin",
     "rule.WitherSkullEntityMixin",
     "rule.InstantaneousRedstoneLamp.RedstoneLampBlockMixin",
-    "rule.noteblockskip.redstoneWireBlockMixin"
+    "rule.noteblockskip.redstoneWireBlockMixin",
+    "rule.TargetBlockIgnoresProjectileHit.TargetBlockMixin"
   ],
   "client": [
   ],

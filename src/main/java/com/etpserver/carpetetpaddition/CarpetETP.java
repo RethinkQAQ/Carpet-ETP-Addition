@@ -1,4 +1,4 @@
-package com.etparty.carpetetpaddition;
+package com.etpserver.carpetetpaddition;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;

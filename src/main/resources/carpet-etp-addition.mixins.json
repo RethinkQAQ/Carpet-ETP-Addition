@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.etparty.carpetetpaddition.mixins",
+  "package": "com.etpserver.carpetetpaddition.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "rule.ComparatorBlockMixin",
@@ -9,7 +9,8 @@
     "rule.WitherSkullEntityMixin",
     "rule.InstantaneousRedstoneLamp.RedstoneLampBlockMixin",
     "rule.noteblockskip.redstoneWireBlockMixin",
-    "rule.TargetBlockIgnoresProjectileHit.TargetBlockMixin"
+    "rule.TargetBlockIgnoresProjectileHit.TargetBlockMixin",
+    "rule.XaeroMapName.PlayerManagerMixin"
   ],
   "client": [
   ],

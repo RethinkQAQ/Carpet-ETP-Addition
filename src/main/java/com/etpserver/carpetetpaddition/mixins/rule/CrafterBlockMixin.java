@@ -1,6 +1,6 @@
-package com.etparty.carpetetpaddition.mixins.rule;
+package com.etpserver.carpetetpaddition.mixins.rule;
 
-import com.etparty.carpetetpaddition.CarpetETPSettings;
+import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.block.CrafterBlock;
@@ -8,7 +8,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(CrafterBlock.class)
 public class CrafterBlockMixin {

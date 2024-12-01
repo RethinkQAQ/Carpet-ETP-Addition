@@ -1,6 +1,8 @@
-package com.etparty.carpetetpaddition;
+package com.etpserver.carpetetpaddition.settings;
 
 import carpet.api.settings.Rule;
+import com.etpserver.carpetetpaddition.CarpetETP;
+
 import static carpet.api.settings.RuleCategory.*;
 
 public class CarpetETPSettings {
@@ -29,6 +31,9 @@ public class CarpetETPSettings {
 
     @Rule(categories = {ETP, CREATIVE})
     public static boolean targetBlockIgnoresProjectileHit = false;
+
+    @Rule(categories = {ETP}, strict = false)
+    public static int xaeroWorldMapID = -1;
 
     public static void onWorldLoadingStarted(){
         CarpetETP.LOGGER.info("CAT settings loading started");

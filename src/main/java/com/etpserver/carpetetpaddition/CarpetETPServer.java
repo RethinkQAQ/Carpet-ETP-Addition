@@ -1,8 +1,13 @@
-package com.etparty.carpetetpaddition;
+package com.etpserver.carpetetpaddition;
 
 import carpet.CarpetExtension;
 import carpet.CarpetServer;
-import com.etparty.carpetetpaddition.utils.CarpetETPAdditionTranslations;
+import com.etpserver.carpetetpaddition.network.XaeroMapPayload;
+import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
+import com.etpserver.carpetetpaddition.utils.CarpetETPAdditionTranslations;
+import com.etpserver.carpetetpaddition.utils.XaeroMapProtocol;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.server.MinecraftServer;
 
 import org.apache.logging.log4j.Logger;
@@ -28,6 +33,7 @@ public class CarpetETPServer implements CarpetExtension{
 
     public static void init() {
         CarpetServer.manageExtension(new CarpetETPServer());
+        PayloadTypeRegistry.playS2C().register(new CustomPayload.Id<>(XaeroMapProtocol.WORLD_KEY), XaeroMapPayload.CODEC);
     }
 
     @Override

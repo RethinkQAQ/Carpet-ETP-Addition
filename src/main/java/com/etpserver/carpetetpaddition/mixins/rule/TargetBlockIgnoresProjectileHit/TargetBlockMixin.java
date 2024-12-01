@@ -1,6 +1,6 @@
-package com.etparty.carpetetpaddition.mixins.rule.TargetBlockIgnoresProjectileHit;
+package com.etpserver.carpetetpaddition.mixins.rule.TargetBlockIgnoresProjectileHit;
 
-import com.etparty.carpetetpaddition.CarpetETPSettings;
+import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.TargetBlock;
 import net.minecraft.entity.projectile.ProjectileEntity;

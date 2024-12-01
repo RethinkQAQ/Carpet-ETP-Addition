@@ -1,6 +1,6 @@
-package com.etparty.carpetetpaddition.mixins.rule.InstantaneousRedstoneLamp;
+package com.etpserver.carpetetpaddition.mixins.rule.InstantaneousRedstoneLamp;
 
-import com.etparty.carpetetpaddition.CarpetETPSettings;
+import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.RedstoneLampBlock;

@@ -1,6 +1,6 @@
-package com.etparty.carpetetpaddition.mixins.rule;
+package com.etpserver.carpetetpaddition.mixins.rule;
 
-import com.etparty.carpetetpaddition.CarpetETPSettings;
+import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.block.*;

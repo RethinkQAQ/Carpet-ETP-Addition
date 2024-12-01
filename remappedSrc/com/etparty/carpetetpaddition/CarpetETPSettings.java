@@ -1,4 +1,4 @@
-package com.etparty.carpetetpaddition;
+package com.etpserver.carpetetpaddition;
 
 import carpet.api.settings.Rule;
 import static carpet.api.settings.RuleCategory.*;

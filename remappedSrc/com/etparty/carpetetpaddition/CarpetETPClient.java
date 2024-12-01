@@ -1,4 +1,4 @@
-package com.etparty.carpetetpaddition;
+package com.etpserver.carpetetpaddition;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.MinecraftClient;

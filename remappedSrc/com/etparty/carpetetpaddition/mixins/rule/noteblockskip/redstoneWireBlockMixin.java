@@ -1,6 +1,6 @@
-package com.etparty.carpetetpaddition.mixins.rule.noteblockskip;
+package com.etpserver.carpetetpaddition.mixins.rule.noteblockskip;
 
-import com.etparty.carpetetpaddition.CarpetETPSettings;
+import com.etpserver.carpetetpaddition.CarpetETPSettings;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;

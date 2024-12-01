@@ -1,8 +1,8 @@
-package com.etparty.carpetetpaddition;
+package com.etpserver.carpetetpaddition;
 
 import carpet.CarpetExtension;
 import carpet.CarpetServer;
-import com.etparty.carpetetpaddition.utils.CarpetETPAdditionTranslations;
+import com.etpserver.carpetetpaddition.utils.CarpetETPAdditionTranslations;
 import net.minecraft.server.MinecraftServer;
 
 import org.apache.logging.log4j.Logger;

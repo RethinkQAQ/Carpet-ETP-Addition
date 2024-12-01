@@ -5,5 +5,8 @@
   "carpet.rule.CrafterCanQC.desc": "none",
   "carpet.rule.WitherSkullWillDiscard.desc": "none",
   "carpet.rule.InstantaneousRedstoneLamp.desc": "none",
-  "carpet.rule.targetBlockIgnoresProjectileHit.name": "none"
+  "carpet.rule.targetBlockIgnoresProjectileHit.name": "none",
+  "carpet.rule.targetBlockIgnoresProjectileHit.desc": "none",
+  "carpet.rule.xaeroWorldMapID.name": "none",
+  "carpet.rule.xaeroWorldMapID.desc": "none"
 }

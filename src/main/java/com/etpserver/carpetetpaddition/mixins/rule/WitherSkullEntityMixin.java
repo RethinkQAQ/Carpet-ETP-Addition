@@ -1,6 +1,6 @@
-package com.etparty.carpetetpaddition.mixins.rule;
+package com.etpserver.carpetetpaddition.mixins.rule;
 
-import com.etparty.carpetetpaddition.CarpetETPSettings;
+import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.projectile.ExplosiveProjectileEntity;
 import net.minecraft.entity.projectile.WitherSkullEntity;

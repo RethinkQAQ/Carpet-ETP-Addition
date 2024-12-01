@@ -26,5 +26,6 @@ public class XaeroMapProtocol {
 
     public static void onSendWorldInfo(@NotNull ServerPlayerEntity player) {
         ServerPlayNetworking.send(player, new XaeroMapPayload<>(WORLD_KEY));
+        ServerPlayNetworking.send(player, new XaeroMapPayload<>(MINI_KEY));
     }
 }

@@ -33,7 +33,9 @@ public class CarpetETPServer implements CarpetExtension{
 
     public static void init() {
         CarpetServer.manageExtension(new CarpetETPServer());
+        // Register XaeroMap payload
         PayloadTypeRegistry.playS2C().register(new CustomPayload.Id<>(XaeroMapProtocol.WORLD_KEY), XaeroMapPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(new CustomPayload.Id<>(XaeroMapProtocol.MINI_KEY), XaeroMapPayload.CODEC);
     }
 
     @Override

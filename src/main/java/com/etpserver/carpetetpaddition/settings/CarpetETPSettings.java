@@ -10,6 +10,7 @@ public class CarpetETPSettings {
     public static final String ETP = "ETP";
     public static final String LOGGER = "logger";
     public static final String CARPET_MOD = "carpet-mod";
+    public static final String XaeroMapNoneName = "#none";
 
     @Rule(categories = {ETP,BUGFIX})
     public static boolean redStoneDontConnectToTrapDoor = false;
@@ -33,7 +34,7 @@ public class CarpetETPSettings {
     public static boolean targetBlockIgnoresProjectileHit = false;
 
     @Rule(categories = {ETP}, strict = false)
-    public static int xaeroWorldMapID = -1;
+    public static String xaeroMapName = XaeroMapNoneName;
 
     public static void onWorldLoadingStarted(){
         CarpetETP.LOGGER.info("CAT settings loading started");

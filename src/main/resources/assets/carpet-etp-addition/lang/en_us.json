@@ -7,6 +7,6 @@
   "carpet.rule.InstantaneousRedstoneLamp.desc": "none",
   "carpet.rule.targetBlockIgnoresProjectileHit.name": "none",
   "carpet.rule.targetBlockIgnoresProjectileHit.desc": "none",
-  "carpet.rule.xaeroWorldMapID.name": "none",
-  "carpet.rule.xaeroWorldMapID.desc": "none"
+  "carpet.rule.xaeroMapName.name": "none",
+  "carpet.rule.xaeroMapName.desc": "none"
 }

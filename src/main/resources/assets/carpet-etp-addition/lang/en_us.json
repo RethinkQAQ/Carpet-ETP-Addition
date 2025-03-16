@@ -8,5 +8,7 @@
   "carpet.rule.targetBlockIgnoresProjectileHit.name": "none",
   "carpet.rule.targetBlockIgnoresProjectileHit.desc": "none",
   "carpet.rule.xaeroMapName.name": "none",
-  "carpet.rule.xaeroMapName.desc": "none"
+  "carpet.rule.xaeroMapName.desc": "none",
+  "carpet.rule.villagerGiftsToHeroCD.name": "none",
+  "carpet.rule.villagerGiftsToHeroCD.desc": "none"
 }

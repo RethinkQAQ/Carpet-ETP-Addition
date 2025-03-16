@@ -36,6 +36,9 @@ public class CarpetETPSettings {
     @Rule(categories = {ETP}, strict = false)
     public static String xaeroMapName = XaeroMapNoneName;
 
+    @Rule(categories = {LOGGER, ETP})
+    public static boolean villagerGiftsToHeroCD = false;
+
     public static void onWorldLoadingStarted(){
         CarpetETP.LOGGER.info("CAT settings loading started");
     }

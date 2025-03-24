@@ -17,7 +17,7 @@ public class GiveGiftsToHeroTaskMixin {
 
     @Inject(
             method = "shouldRun(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/passive/VillagerEntity;)Z",
-            at = @At("HEAD")
+            at = @At("RETURN")
     )
     private void shouldRun(ServerWorld serverWorld, VillagerEntity villagerEntity, CallbackInfoReturnable<Boolean> cir) {
         if (CarpetETPSettings.villagerGiftsToHeroCD){

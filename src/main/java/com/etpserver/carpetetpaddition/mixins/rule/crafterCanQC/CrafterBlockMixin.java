@@ -1,4 +1,4 @@
-package com.etpserver.carpetetpaddition.mixins.rule;
+package com.etpserver.carpetetpaddition.mixins.rule.crafterCanQC;
 
 import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;

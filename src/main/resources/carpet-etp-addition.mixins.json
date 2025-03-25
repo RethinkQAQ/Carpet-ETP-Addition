@@ -5,8 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "rule.ComparatorBlockMixin",
-    "rule.CrafterBlockMixin",
-    "rule.WitherSkullEntityMixin",
+    "rule.crafterCanQC.CrafterBlockMixin",
+    "rule.disableEntityCreatePortal.NetherPortalBlockMixin",
     "rule.giftsToHeroCD.GiveGiftsToHeroTaskMixin",
     "rule.InstantaneousRedstoneLamp.RedstoneLampBlockMixin",
     "rule.noteblockskip.redstoneWireBlockMixin",

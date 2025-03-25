@@ -41,6 +41,9 @@ public class CarpetETPSettings {
     @Rule(categories = {ETP})
     public static boolean pearlTickets = false;
 
+    @Rule(categories = {ETP})
+    public static boolean disableEntityCreatePortal = false;
+
     public static void onWorldLoadingStarted(){
         CarpetETP.LOGGER.info("CAT settings loading started");
     }

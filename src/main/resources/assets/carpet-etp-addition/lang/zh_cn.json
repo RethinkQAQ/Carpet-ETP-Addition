@@ -16,5 +16,7 @@
   "carpet.rule.xaeroMapName.name": "xaero地图名称",
   "carpet.rule.xaeroMapName.desc": "用于同步xaero地图",
   "carpet.rule.villagerGiftsToHeroCD.name": "显示村庄英雄奖励冷却时间",
-  "carpet.rule.villagerGiftsToHeroCD.desc": "将村民的礼物奖励的冷却时间显示在村民的名字上"
+  "carpet.rule.villagerGiftsToHeroCD.desc": "将村民的礼物奖励的冷却时间显示在村民的名字上",
+  "carpet.rule.pearlTickets.name": "珍珠加载",
+  "carpet.rule.pearlTickets.desc": "让具有水平动量的珍珠可用加载区块"
 }

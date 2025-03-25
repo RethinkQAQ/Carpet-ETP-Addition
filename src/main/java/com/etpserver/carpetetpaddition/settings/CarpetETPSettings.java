@@ -9,7 +9,6 @@ public class CarpetETPSettings {
     //ETP Rule categories
     public static final String ETP = "ETP";
     public static final String LOGGER = "logger";
-    public static final String CARPET_MOD = "carpet-mod";
     public static final String XaeroMapNoneName = "#none";
 
     @Rule(categories = {ETP,BUGFIX})

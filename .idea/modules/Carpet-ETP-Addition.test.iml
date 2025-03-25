@@ -15,4 +15,5 @@
   <component name="McpModuleSettings">
     <option name="minecraftVersion" value="1.21" />
   </component>
+  <component name="TestModuleProperties" production-module="Carpet-ETP-Addition.main" />
 </module>

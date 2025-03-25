@@ -7,8 +7,10 @@
     "rule.ComparatorBlockMixin",
     "rule.CrafterBlockMixin",
     "rule.WitherSkullEntityMixin",
+    "rule.giftsToHeroCD.GiveGiftsToHeroTaskMixin",
     "rule.InstantaneousRedstoneLamp.RedstoneLampBlockMixin",
     "rule.noteblockskip.redstoneWireBlockMixin",
+    "rule.pealTickets.EnderPearlEntityMixin",
     "rule.TargetBlockIgnoresProjectileHit.TargetBlockMixin",
     "rule.XaeroMapName.PlayerManagerMixin"
   ],

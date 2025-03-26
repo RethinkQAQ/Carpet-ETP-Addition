@@ -2,7 +2,7 @@
   "carpet.rule.redStoneDontConnectToTrapDoor.desc": "none",
   "carpet.rule.redStoneWireCanRunOnTrapDoor.desc": "none",
   "carpet.rule.unExternPistonCanBeCompare.desc": "none",
-  "carpet.rule.CrafterCanQC.desc": "none"
+  "carpet.rule.CrafterCanQC.desc": "none",
   "carpet.rule.InstantaneousRedstoneLamp.desc": "none",
   "carpet.rule.targetBlockIgnoresProjectileHit.name": "none",
   "carpet.rule.targetBlockIgnoresProjectileHit.desc": "none",
@@ -10,6 +10,6 @@
   "carpet.rule.villagerGiftsToHeroCD.desc": "none",
   "carpet.rule.pearlTickets.name": "pearlTickets",
   "carpet.rule.pearlTickets.desc": "none",
-  "carpet.rule.disableEntityCreatePortal.name": "disableEntityCreatePortal",
-  "carpet.rule.disableEntityCreatePortal.desc": "none"
+  "carpet.rule.disableCreatePortal.name": "disableCreatePortal",
+  "carpet.rule.disableCreatePortal.desc": "none"
 }

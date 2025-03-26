@@ -8,7 +8,6 @@
   "carpet.rule.redStoneWireCanRunOnTrapDoor.desc": "让红石线不检测下方更新",
   "carpet.rule.unExternPistonCanBeCompare.desc": "让比较器可以隔着完整活塞比较",
   "carpet.rule.CrafterCanQC.desc": "让合成器可以QC激活",
-  "carpet.rule.WitherSkullWillDiscard.desc": "让凋零头一定时间后消失",
   "carpet.rule.InstantaneousRedstoneLamp.desc": "瞬时红石灯",
   "carpet.rule.targetBlockIgnoresProjectileHit.name": "标靶方块忽略投掷物",
   "carpet.rule.targetBlockIgnoresProjectileHit.desc": "让标靶方块忽略投掷物，只作为引导红实线的作用",
@@ -18,6 +17,6 @@
   "carpet.rule.villagerGiftsToHeroCD.desc": "将村民的礼物奖励的冷却时间显示在村民的名字上",
   "carpet.rule.pearlTickets.name": "珍珠加载",
   "carpet.rule.pearlTickets.desc": "让具有水平动量的珍珠可用加载区块",
-  "carpet.rule.disableEntityCreatePortal.name": "禁止实体创建地狱门",
-  "carpet.rule.disableEntityCreatePortal.desc": "在1.21+, 实体也可以创建地狱门, 但此规则可以禁止它们创建. 目的是方便对门"
+  "carpet.rule.disableCreatePortal.name": "禁止实体创建地狱门",
+  "carpet.rule.disableCreatePortal.desc": "在1.21+, 实体也可以创建地狱门, 但此规则可以禁止它们创建. 目的是方便对门\n'off': 关闭\n'playerOnly: 仅限玩家\n'all': 所有实体都不能创建地狱门"
 }

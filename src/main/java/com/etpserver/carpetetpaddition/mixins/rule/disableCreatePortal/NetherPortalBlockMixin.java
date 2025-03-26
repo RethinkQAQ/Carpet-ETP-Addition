@@ -1,4 +1,4 @@
-package com.etpserver.carpetetpaddition.mixins.rule.disableEntityCreatePortal;
+package com.etpserver.carpetetpaddition.mixins.rule.disableCreatePortal;
 
 import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
 import net.minecraft.block.NetherPortalBlock;
@@ -24,8 +24,11 @@ public class NetherPortalBlockMixin {
             ),
             cancellable = true)
     private void disableEntityCreatePortal(ServerWorld world, Entity entity, BlockPos pos, BlockPos scaledPos, boolean inNether, WorldBorder worldBorder, CallbackInfoReturnable<TeleportTarget> cir) {
-        if (CarpetETPSettings.disableEntityCreatePortal && !(entity instanceof PlayerEntity)) {
-            cir.setReturnValue(null);
+        if (!CarpetETPSettings.disableCreatePortal.equals("off")) {
+            if (("all".equals(CarpetETPSettings.disableCreatePortal) ||
+                    ("playerOnly".equals(CarpetETPSettings.disableCreatePortal) && !(entity instanceof PlayerEntity)))) {
+                cir.setReturnValue(null);
+            }
         }
     }
 }

@@ -24,9 +24,6 @@ public class CarpetETPSettings {
     public static boolean CrafterCanQC = false;
 
     @Rule(categories = ETP)
-    public static boolean WitherSkullWillDiscard =false;
-
-    @Rule(categories = ETP)
     public static boolean InstantaneousRedstoneLamp = false;
 
     @Rule(categories = {ETP, CREATIVE})
@@ -41,8 +38,12 @@ public class CarpetETPSettings {
     @Rule(categories = {ETP})
     public static boolean pearlTickets = false;
 
-    @Rule(categories = {ETP})
-    public static boolean disableEntityCreatePortal = false;
+    @Rule(
+            categories = {ETP},
+            strict = true,
+            options = {"off", "playerOnly", "all"}
+    )
+    public static String disableCreatePortal = "off";
 
     public static void onWorldLoadingStarted(){
         CarpetETP.LOGGER.info("CAT settings loading started");

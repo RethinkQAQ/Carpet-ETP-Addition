@@ -6,7 +6,7 @@
   "mixins": [
     "rule.ComparatorBlockMixin",
     "rule.crafterCanQC.CrafterBlockMixin",
-    "rule.disableEntityCreatePortal.NetherPortalBlockMixin",
+    "rule.disableCreatePortal.NetherPortalBlockMixin",
     "rule.giftsToHeroCD.GiveGiftsToHeroTaskMixin",
     "rule.InstantaneousRedstoneLamp.RedstoneLampBlockMixin",
     "rule.noteblockskip.redstoneWireBlockMixin",

@@ -7,7 +7,9 @@ version = project.mod_version
 group = project.maven_group
 
 base {
-    archivesName = project.archives_base_name
+    group = project.maven_group
+    version = project.mod_version
+    archivesName = project.archives_base_name + '-' + project.minecraft_version
 }
 
 repositories {

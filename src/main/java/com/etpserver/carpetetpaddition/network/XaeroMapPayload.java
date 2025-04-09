@@ -36,6 +36,6 @@ public class XaeroMapPayload<T extends XaeroMapPayload<T>> implements CustomPayl
 
     @Override
     public Id<? extends XaeroMapPayload<T>> getId() {
-        return new CustomPayload.Id<>(id);
+        return new Id<>(id);
     }
 }

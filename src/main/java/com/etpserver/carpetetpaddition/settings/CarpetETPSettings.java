@@ -35,9 +35,6 @@ public class CarpetETPSettings {
     @Rule(categories = {LOGGER, ETP})
     public static boolean villagerGiftsToHeroCD = false;
 
-    @Rule(categories = {ETP})
-    public static boolean pearlTickets = false;
-
     @Rule(
             categories = {ETP},
             strict = true,

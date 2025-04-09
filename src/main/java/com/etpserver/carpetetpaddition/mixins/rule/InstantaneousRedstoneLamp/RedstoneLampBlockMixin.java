@@ -6,6 +6,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.RedstoneLampBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.block.WireOrientation;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -23,7 +24,7 @@ public class RedstoneLampBlockMixin {
                     target = "Lnet/minecraft/world/World;scheduleBlockTick(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/Block;I)V"
         ),
             cancellable = true)
-    private void onNeighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify, CallbackInfo ci) {
+    private void onNeighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, WireOrientation wireOrientation, boolean notify, CallbackInfo ci) {
         if(CarpetETPSettings.InstantaneousRedstoneLamp) {
             ci.cancel();
             world.setBlockState(pos, state.cycle(LIT),Block.NOTIFY_LISTENERS);

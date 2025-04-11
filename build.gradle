@@ -3,11 +3,10 @@ plugins {
     id 'maven-publish'
 }
 
-version = project.mod_version
-group = project.maven_group
-
 base {
-    archivesName = project.archives_base_name
+    group = project.maven_group
+    version = project.mod_version
+    archivesName = project.archives_base_name + "-" + project.minecraft_version
 }
 
 repositories {
@@ -29,7 +28,7 @@ dependencies {
 
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation "com.github.gnembon:fabric-carpet:1.4.147"
+    modImplementation "com.github.gnembon:fabric-carpet:${project.carpet_version}"
 }
 
 processResources {

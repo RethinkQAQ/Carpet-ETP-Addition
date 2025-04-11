@@ -11,5 +11,7 @@
   "carpet.rule.pearlTickets.name": "pearlTickets",
   "carpet.rule.pearlTickets.desc": "none",
   "carpet.rule.disableCreatePortal.name": "disableCreatePortal",
-  "carpet.rule.disableCreatePortal.desc": "none"
+  "carpet.rule.disableCreatePortal.desc": "none",
+  "carpet.rule.rideCommandCanRidePlayers.name": "rideCommandCanRidePlayers",
+  "carpet.rule.rideCommandCanRidePlayers.desc": "none"
 }

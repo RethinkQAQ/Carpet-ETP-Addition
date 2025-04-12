@@ -4,12 +4,16 @@
   "package": "com.etpserver.carpetetpaddition.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "carpet.SettingManagerMixin",
     "rule.ComparatorBlockMixin",
     "rule.crafterCanQC.CrafterBlockMixin",
     "rule.disableCreatePortal.NetherPortalBlockMixin",
     "rule.giftsToHeroCD.GiveGiftsToHeroTaskMixin",
     "rule.InstantaneousRedstoneLamp.RedstoneLampBlockMixin",
     "rule.noteblockskip.redstoneWireBlockMixin",
+    "rule.pealTickets.EnderPearlEntityMixin",
+    "rule.rideCommandCanRidePlayers.EntityMixin",
+    "rule.rideCommandCanRidePlayers.RideCommandMixin",
     "rule.TargetBlockIgnoresProjectileHit.TargetBlockMixin",
     "rule.XaeroMapName.PlayerManagerMixin"
   ],

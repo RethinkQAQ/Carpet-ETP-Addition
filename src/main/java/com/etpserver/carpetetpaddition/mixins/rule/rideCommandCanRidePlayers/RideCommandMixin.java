@@ -19,6 +19,6 @@ public class RideCommandMixin {
             )
     )
     private static EntityType<?> canRidePlayers(Entity entity, Operation<EntityType<?>> original) {
-        return CarpetETPSettings.rideCommandCanRidePlayers?  EntityType.ZOMBIE: original.call(entity);
+        return CarpetETPSettings.rideCommandCanRidePlayers?  null: original.call(entity);
     }
 }

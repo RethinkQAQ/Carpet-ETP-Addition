@@ -12,6 +12,8 @@
     "rule.InstantaneousRedstoneLamp.RedstoneLampBlockMixin",
     "rule.noteblockskip.redstoneWireBlockMixin",
     "rule.pealTickets.EnderPearlEntityMixin",
+    "rule.rideCommandCanRidePlayers.EntityMixin",
+    "rule.rideCommandCanRidePlayers.RideCommandMixin",
     "rule.TargetBlockIgnoresProjectileHit.TargetBlockMixin",
     "rule.XaeroMapName.PlayerManagerMixin"
   ],

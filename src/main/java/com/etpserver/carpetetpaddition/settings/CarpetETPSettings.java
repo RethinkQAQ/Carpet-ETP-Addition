@@ -35,6 +35,9 @@ public class CarpetETPSettings {
     @Rule(categories = {LOGGER, ETP})
     public static boolean villagerGiftsToHeroCD = false;
 
+    @Rule(categories = {CREATIVE, ETP})
+    public static boolean rideCommandCanRidePlayers = false;
+
     @Rule(categories = {ETP})
     public static boolean pearlTickets = false;
 
@@ -44,8 +47,4 @@ public class CarpetETPSettings {
             options = {"off", "playerOnly", "all"}
     )
     public static String disableCreatePortal = "off";
-
-    public static void onWorldLoadingStarted(){
-        CarpetETP.LOGGER.info("CAT settings loading started");
-    }
 }

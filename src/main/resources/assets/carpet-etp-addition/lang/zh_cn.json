@@ -18,5 +18,7 @@
   "carpet.rule.pearlTickets.name": "珍珠加载",
   "carpet.rule.pearlTickets.desc": "让具有水平动量的珍珠可用加载区块",
   "carpet.rule.disableCreatePortal.name": "禁止实体创建地狱门",
-  "carpet.rule.disableCreatePortal.desc": "在1.21+, 实体也可以创建地狱门, 但此规则可以禁止它们创建. 目的是方便对门\n'off': 关闭\n'playerOnly: 仅限玩家\n'all': 所有实体都不能创建地狱门"
+  "carpet.rule.disableCreatePortal.desc": "在1.21+, 实体也可以创建地狱门, 但此规则可以禁止它们创建. 目的是方便对门\n'off': 关闭\n'playerOnly: 仅限玩家\n'all': 所有实体都不能创建地狱门",
+  "carpet.rule.rideCommandCanRidePlayers.name": "ride命令可以骑乘玩家",
+  "carpet.rule.rideCommandCanRidePlayers.desc": "原版的ride命令无法骑乘玩家, 但此规则可以让它可以"
 }

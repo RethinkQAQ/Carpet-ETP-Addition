@@ -38,9 +38,6 @@ public class CarpetETPSettings {
     @Rule(categories = {CREATIVE, ETP})
     public static boolean rideCommandCanRidePlayers = false;
 
-    @Rule(categories = {ETP})
-    public static boolean pearlTickets = false;
-
     @Rule(
             categories = {ETP},
             strict = true,

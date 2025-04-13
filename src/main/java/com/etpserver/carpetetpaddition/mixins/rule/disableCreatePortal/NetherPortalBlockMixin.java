@@ -24,9 +24,9 @@ public class NetherPortalBlockMixin {
             ),
             cancellable = true)
     private void disableEntityCreatePortal(ServerWorld world, Entity entity, BlockPos pos, BlockPos scaledPos, boolean inNether, WorldBorder worldBorder, CallbackInfoReturnable<TeleportTarget> cir) {
-        if (!CarpetETPSettings.disableCreatePortal.equals("off")) {
-            if (("all".equals(CarpetETPSettings.disableCreatePortal) ||
-                    ("playerOnly".equals(CarpetETPSettings.disableCreatePortal) && !(entity instanceof PlayerEntity)))) {
+        if (!CarpetETPSettings.disableCreatePortal.equals("OFF")) {
+            if (("ALL".equals(CarpetETPSettings.disableCreatePortal) ||
+                    ("NonPlayer".equals(CarpetETPSettings.disableCreatePortal) && !(entity instanceof PlayerEntity)))) {
                 cir.setReturnValue(null);
             }
         }

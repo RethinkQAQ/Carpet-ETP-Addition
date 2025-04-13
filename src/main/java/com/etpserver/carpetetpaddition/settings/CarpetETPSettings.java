@@ -44,7 +44,7 @@ public class CarpetETPSettings {
     @Rule(
             categories = {ETP},
             strict = true,
-            options = {"off", "playerOnly", "all"}
+            options = {"OFF", "NonPlayer", "ALL"}
     )
-    public static String disableCreatePortal = "off";
+    public static String disableCreatePortal = "OFF";
 }

@@ -17,7 +17,7 @@ public class PlayerManagerMixin {
             at = @At("RETURN")
     )
     private void sendWorldInfo(ServerPlayerEntity player, ServerWorld world, CallbackInfo ci) {
-        if (CarpetETPSettings.xaeroMapName.equals(CarpetETPSettings.XaeroMapNoneName)) {
+        if (CarpetETPSettings.multiWorldMapID.equals(CarpetETPSettings.MULTIWORLDID)) {
             return;
         }
         XaeroMapProtocol.onSendWorldInfo(player);

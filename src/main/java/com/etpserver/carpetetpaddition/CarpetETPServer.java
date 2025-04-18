@@ -2,6 +2,7 @@ package com.etpserver.carpetetpaddition;
 
 import carpet.CarpetExtension;
 import carpet.CarpetServer;
+import com.etpserver.carpetetpaddition.network.WorldInfoPayload;
 import com.etpserver.carpetetpaddition.network.XaeroMapPayload;
 import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
 import com.etpserver.carpetetpaddition.utils.CarpetETPAdditionTranslations;
@@ -36,6 +37,7 @@ public class CarpetETPServer implements CarpetExtension{
         // Register XaeroMap payload
         PayloadTypeRegistry.playS2C().register(new CustomPayload.Id<>(XaeroMapProtocol.WORLD_KEY), XaeroMapPayload.CODEC);
         PayloadTypeRegistry.playS2C().register(new CustomPayload.Id<>(XaeroMapProtocol.MINI_KEY), XaeroMapPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(new CustomPayload.Id<>(WorldInfoPayload.WORLD_INFO_PACKET_ID), WorldInfoPayload.CODEC);
     }
 
     @Override

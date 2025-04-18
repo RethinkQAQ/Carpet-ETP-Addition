@@ -27,7 +27,7 @@ public class XaeroMapPayload<T extends XaeroMapPayload<T>> implements CustomPayl
 
     public void write(PacketByteBuf buf) {
         CRC32 crc32 = new CRC32();
-        byte[] data = CarpetETPSettings.xaeroMapName.getBytes();
+        byte[] data = CarpetETPSettings.multiWorldMapID.getBytes();
         crc32.update(data, 0, data.length);
         buf.writeByte(0);
         buf.writeInt((int) crc32.getValue());

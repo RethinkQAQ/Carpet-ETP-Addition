@@ -1,13 +1,15 @@
 package com.etpserver.carpetetpaddition.utils;
 
+import com.etpserver.carpetetpaddition.network.WorldInfoPayload;
 import com.etpserver.carpetetpaddition.network.XaeroMapPayload;
+import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 
-public class XaeroMapProtocol {
+public class MapProtocol {
     public static final String XAERO_WORLD_MAP = "xaeroworldmap";
     public static final String XAERO_MINI_MAP = "xaerominimap";
 
@@ -27,5 +29,6 @@ public class XaeroMapProtocol {
     public static void onSendWorldInfo(@NotNull ServerPlayerEntity player) {
         ServerPlayNetworking.send(player, new XaeroMapPayload<>(WORLD_KEY));
         ServerPlayNetworking.send(player, new XaeroMapPayload<>(MINI_KEY));
+        ServerPlayNetworking.send(player, new WorldInfoPayload<>(CarpetETPSettings.multiWorldMapID));
     }
 }

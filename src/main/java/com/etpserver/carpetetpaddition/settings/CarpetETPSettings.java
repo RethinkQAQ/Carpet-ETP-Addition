@@ -29,7 +29,7 @@ public class CarpetETPSettings {
     public static boolean targetBlockIgnoresProjectileHit = false;
 
     @Rule(categories = {ETP}, strict = false)
-    public static String multiWorldMapID = MULTIWORLDID;
+    public static String xaeroMapName = MULTIWORLDID;
 
     @Rule(categories = {LOGGER, ETP})
     public static boolean villagerGiftsToHeroCD = false;
@@ -46,4 +46,10 @@ public class CarpetETPSettings {
             options = {"OFF", "NonPlayer", "ALL"}
     )
     public static String disableCreatePortal = "OFF";
+
+    @Rule(categories = {ETP, CREATIVE})
+    public static boolean disableEggSpawnChicken = false;
+
+    @Rule(categories = {ETP, CREATIVE})
+    public static boolean testMode = false;
 }

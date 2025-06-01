@@ -4,7 +4,7 @@
 
 ----
 
-# Feature
+# 功能
 1. ``redStoneDontConnectToTrapDoor`` 和 ``redStoneWireCanRunOnTrapDoor`` 可以让音符盒更新跳略在1.20+使用
 2. ``unExternPistonCanBeCompare`` 可以让比较器隔着 _未伸出的活塞_ 检测容器
 3. ``InstantaneousRedstoneLamp`` 可以让红石灯瞬时熄灭

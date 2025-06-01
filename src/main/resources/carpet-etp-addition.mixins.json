@@ -8,6 +8,7 @@
     "rule.ComparatorBlockMixin",
     "rule.crafterCanQC.CrafterBlockMixin",
     "rule.disableCreatePortal.NetherPortalBlockMixin",
+    "rule.disableEggSpawnChicken.EggEntityMixin",
     "rule.giftsToHeroCD.GiveGiftsToHeroTaskMixin",
     "rule.InstantaneousRedstoneLamp.RedstoneLampBlockMixin",
     "rule.noteblockskip.redstoneWireBlockMixin",
@@ -16,6 +17,7 @@
     "rule.rideCommandCanRidePlayers.PlayerEntityMixin",
     "rule.rideCommandCanRidePlayers.RideCommandMixin",
     "rule.TargetBlockIgnoresProjectileHit.TargetBlockMixin",
+    "rule.testMode.ServePlayerEntityMixin",
     "rule.XaeroMapName.PlayerManagerMixin"
   ],
   "client": [

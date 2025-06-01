@@ -1,7 +1,7 @@
 package com.etpserver.carpetetpaddition.mixins.rule.XaeroMapName;
 
 import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
-import com.etpserver.carpetetpaddition.utils.XaeroMapProtocol;
+import com.etpserver.carpetetpaddition.utils.MapProtocol;
 import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -17,9 +17,9 @@ public class PlayerManagerMixin {
             at = @At("RETURN")
     )
     private void sendWorldInfo(ServerPlayerEntity player, ServerWorld world, CallbackInfo ci) {
-        if (CarpetETPSettings.multiWorldMapID.equals(CarpetETPSettings.MULTIWORLDID)) {
+        if (CarpetETPSettings.xaeroMapName.equals(CarpetETPSettings.MULTIWORLDID)) {
             return;
         }
-        XaeroMapProtocol.onSendWorldInfo(player);
+        MapProtocol.onSendWorldInfo(player);
     }
 }

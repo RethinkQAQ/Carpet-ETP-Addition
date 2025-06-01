@@ -29,6 +29,6 @@ public class MapProtocol {
     public static void onSendWorldInfo(@NotNull ServerPlayerEntity player) {
         ServerPlayNetworking.send(player, new XaeroMapPayload<>(WORLD_KEY));
         ServerPlayNetworking.send(player, new XaeroMapPayload<>(MINI_KEY));
-        ServerPlayNetworking.send(player, new WorldInfoPayload<>(CarpetETPSettings.multiWorldMapID));
+        ServerPlayNetworking.send(player, new WorldInfoPayload<>(CarpetETPSettings.xaeroMapName));
     }
 }

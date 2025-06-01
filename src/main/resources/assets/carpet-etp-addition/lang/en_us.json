@@ -6,12 +6,16 @@
   "carpet.rule.InstantaneousRedstoneLamp.desc": "none",
   "carpet.rule.targetBlockIgnoresProjectileHit.name": "none",
   "carpet.rule.targetBlockIgnoresProjectileHit.desc": "none",
-  "carpet.rule.multiWorldMapID.desc": "none",
+  "carpet.rule.xaeroMapName.desc": "none",
   "carpet.rule.villagerGiftsToHeroCD.desc": "none",
   "carpet.rule.pearlTickets.name": "pearlTickets",
   "carpet.rule.pearlTickets.desc": "none",
   "carpet.rule.disableCreatePortal.name": "disableCreatePortal",
   "carpet.rule.disableCreatePortal.desc": "none",
   "carpet.rule.rideCommandCanRidePlayers.name": "rideCommandCanRidePlayers",
-  "carpet.rule.rideCommandCanRidePlayers.desc": "none"
+  "carpet.rule.rideCommandCanRidePlayers.desc": "none",
+  "carpet.rule.disableEggSpawnChicken.name": "none",
+  "carpet.rule.disableEggSpawnChicken.desc": "none",
+  "carpet.rule.testMode.name": "testMode",
+  "carpet.rule.testMode.desc": "none"
 }

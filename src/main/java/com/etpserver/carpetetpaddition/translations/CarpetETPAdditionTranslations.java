@@ -1,4 +1,4 @@
-package com.etpserver.carpetetpaddition.utils;
+package com.etpserver.carpetetpaddition.translations;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;

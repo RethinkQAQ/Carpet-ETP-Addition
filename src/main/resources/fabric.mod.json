@@ -4,23 +4,25 @@
   "version": "${version}",
   "name": "Carpet ETP Addition",
   "description": "",
-  "authors": ["KathleenCome"],
+  "authors": ["Rethink_QAQ"],
   "contact": {
-    "repo": "https://github.com/KathleenCome/Carpet-ETP-Addition"
+    "repo": "https://github.com/RethinkQAQ/Carpet-ETP-Addition"
   },
-  "license": "MIT",
-  "icon": "assets/carpet-etp-addition/icon.png",
+  "license": "LGPL-3.0",
+  "icon": "assets/carpetetpaddition/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [],
     "main": ["com.etpserver.carpetetpaddition.CarpetETP"]
   },
+  "accessWidener": "carpetetpaddition.accesswidener",
   "mixins": [
-    "carpet-etp-addition.mixins.json"
+    "carpetetpaddition.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=${loader_version}",
-    "fabric": "*",
-    "minecraft": "${minecraft_version}"
+    "fabricloader": ">=0.11.4",
+    "minecraft": "${minecraft_dependency}",
+    "carpet": "${carpet_dependency}",
+    "fabric-api": "*"
   }
 }

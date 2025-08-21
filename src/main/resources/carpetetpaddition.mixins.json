@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "com.etpserver.carpetetpaddition.mixins",
-  "compatibilityLevel": "JAVA_17",
+  "compatibilityLevel": "{{COMPATIBILITY_LEVEL}}",
   "mixins": [
     "carpet.SettingManagerMixin",
     "rule.ComparatorBlockMixin",
@@ -14,7 +14,7 @@
     "rule.giftsToHeroCD.GiveGiftsToHeroTaskMixin",
     "rule.InstantaneousRedstoneLamp.RedstoneLampBlockMixin",
     "rule.noteblockskip.redstoneWireBlockMixin",
-    "rule.pealTickets.EnderPearlEntityMixin",
+    "rule.pearlTickets.EnderPearlEntityMixin",
     "rule.rideCommandCanRidePlayers.EntityMixin",
     "rule.rideCommandCanRidePlayers.PlayerEntityMixin",
     "rule.rideCommandCanRidePlayers.RideCommandMixin",

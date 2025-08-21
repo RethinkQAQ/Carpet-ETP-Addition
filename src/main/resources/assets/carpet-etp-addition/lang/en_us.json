@@ -17,5 +17,9 @@
   "carpet.rule.disableEggSpawnChicken.name": "none",
   "carpet.rule.disableEggSpawnChicken.desc": "none",
   "carpet.rule.testMode.name": "testMode",
-  "carpet.rule.testMode.desc": "none"
+  "carpet.rule.testMode.desc": "none",
+  "carpet.rule.commandBlockFeedbackEnhanced.name": "commandBlockFeedbackEnhanced",
+  "carpet.rule.commandBlockFeedbackEnhanced.desc": "none",
+  "carpet.rule.spectatorLeashBreak.name": "spectatorLeashBreak",
+  "carpet.rule.spectatorLeashBreak.desc": "none"
 }

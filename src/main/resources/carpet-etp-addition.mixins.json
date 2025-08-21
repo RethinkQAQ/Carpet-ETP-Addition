@@ -6,6 +6,8 @@
   "mixins": [
     "carpet.SettingManagerMixin",
     "rule.ComparatorBlockMixin",
+    "rule.spectatorLeashBreak.LeashableMixin",
+    "rule.commandBlockFeedbackEnhanced.ServerCommandSourceMixin",
     "rule.crafterCanQC.CrafterBlockMixin",
     "rule.disableCreatePortal.NetherPortalBlockMixin",
     "rule.disableEggSpawnChicken.EggEntityMixin",

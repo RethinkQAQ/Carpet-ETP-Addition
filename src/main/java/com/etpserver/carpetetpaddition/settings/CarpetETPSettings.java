@@ -52,4 +52,10 @@ public class CarpetETPSettings {
 
     @Rule(categories = {ETP, CREATIVE})
     public static boolean testMode = false;
+
+    @Rule(categories = {ETP, SURVIVAL})
+    public static boolean spectatorLeashBreak = false;
+
+    @Rule(categories = {ETP, CREATIVE})
+    public static boolean commandBlockFeedbackEnhanced = false;
 }

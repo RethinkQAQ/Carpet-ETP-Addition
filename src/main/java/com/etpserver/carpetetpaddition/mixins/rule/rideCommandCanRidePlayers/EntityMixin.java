@@ -43,13 +43,22 @@ public abstract class EntityMixin{
     private Entity vehicle;
 
     @Inject(
+            //#if MC >= 12109
+            //$$ method = "startRiding(Lnet/minecraft/entity/Entity;ZZ)Z",
+            //#else
             method = "startRiding(Lnet/minecraft/entity/Entity;Z)Z",
+            //#endif
             at = @At(
                     value = "RETURN"
             )
     )
-    private void sendRidePacket(Entity entity, boolean force, CallbackInfoReturnable<Boolean> cir) {
-        if (this.vehicle != null && this.vehicle instanceof ServerPlayerEntity &&!this.vehicle.getWorld().isClient) {
+    private void sendRidePacket(Entity entity, boolean force,
+                                //#if MC >= 12109
+                                //$$ boolean emitEvent,
+                                //#endif
+                                CallbackInfoReturnable<Boolean> cir)
+    {
+        if (this.vehicle != null && this.vehicle instanceof ServerPlayerEntity &&!this.vehicle.getWorld().isClient()) {
                 ((ServerPlayerEntity) vehicle).networkHandler.sendPacket(new EntityPassengersSetS2CPacket(vehicle));
         }
     }

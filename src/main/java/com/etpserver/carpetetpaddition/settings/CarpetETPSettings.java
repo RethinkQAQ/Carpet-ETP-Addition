@@ -80,4 +80,11 @@ public class CarpetETPSettings {
 
     @Rule(categories = {ETP, CREATIVE})
     public static boolean commandBlockFeedbackEnhanced = false;
+
+    @Rule(
+            categories = {ETP, CREATIVE},
+            strict = false,
+            options = {"6000", "12000", "never"}
+    )
+    public static String itemDespawnTime = "6000";
 }

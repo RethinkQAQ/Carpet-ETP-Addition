@@ -28,5 +28,7 @@
   "carpet.rule.commandBlockFeedbackEnhanced.name": "命令方块反馈消息增强",
   "carpet.rule.commandBlockFeedbackEnhanced.desc": "让命令方块的反馈消息显示可以查看坐标并且提供点击传送",
   "carpet.rule.spectatorLeashBreak.name": "旁观者拴绳断裂",
-  "carpet.rule.spectatorLeashBreak.desc": "防止观察者飞船这一种超模行为"
+  "carpet.rule.spectatorLeashBreak.desc": "防止观察者飞船这一种超模行为",
+  "carpet.rule.itemDespawnTime.name": "物品消失时间",
+  "carpet.rule.itemDespawnTime.desc": "设置物品的消失的时间(gt)\n '6000' 游戏默认消失时长\n 'never' 物品永不消失"
 }

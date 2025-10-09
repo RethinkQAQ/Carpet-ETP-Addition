@@ -1,23 +1,27 @@
 {
   "required": true,
   "minVersion": "0.8",
+  "mixinextras": {
+    "minVersion": "0.5.0"
+  },
   "package": "com.etpserver.carpetetpaddition.mixins",
   "compatibilityLevel": "{{COMPATIBILITY_LEVEL}}",
   "mixins": [
     "carpet.SettingManagerMixin",
     "rule.ComparatorBlockMixin",
-    "rule.spectatorLeashBreak.LeashableMixin",
     "rule.commandBlockFeedbackEnhanced.ServerCommandSourceMixin",
     "rule.crafterCanQC.CrafterBlockMixin",
     "rule.disableCreatePortal.NetherPortalBlockMixin",
     "rule.disableEggSpawnChicken.EggEntityMixin",
     "rule.giftsToHeroCD.GiveGiftsToHeroTaskMixin",
     "rule.InstantaneousRedstoneLamp.RedstoneLampBlockMixin",
+    "rule.itemDespwanTime.ItemEntityMixin",
     "rule.noteblockskip.redstoneWireBlockMixin",
     "rule.pearlTickets.EnderPearlEntityMixin",
     "rule.rideCommandCanRidePlayers.EntityMixin",
     "rule.rideCommandCanRidePlayers.PlayerEntityMixin",
     "rule.rideCommandCanRidePlayers.RideCommandMixin",
+    "rule.spectatorLeashBreak.LeashableMixin",
     "rule.TargetBlockIgnoresProjectileHit.TargetBlockMixin",
     "rule.testMode.ServePlayerEntityMixin",
     "rule.XaeroMapName.PlayerManagerMixin"

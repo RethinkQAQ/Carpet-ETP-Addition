@@ -31,7 +31,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 //#if MC >= 12103
-//$$ import net.minecraft.world.block.WireOrientation;
+//$$ import net.minecraft.world.level.redstone.Orientation;
 //#endif
 
 import static net.minecraft.world.level.block.RedstoneLampBlock.LIT;
@@ -48,7 +48,7 @@ public class RedstoneLampBlockMixin {
             cancellable = true)
     private void onNeighborUpdate(BlockState state, Level world, BlockPos pos, Block sourceBlock,
                                   //#if MC >= 12103
-                                  //$$ WireOrientation wireOrientation,
+                                  //$$ Orientation wireOrientation,
                                   //#elseif
                                   BlockPos sourcePos,
                                   //#endif

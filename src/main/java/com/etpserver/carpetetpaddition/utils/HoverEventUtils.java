@@ -27,7 +27,7 @@ public class HoverEventUtils {
         //#if MC < 12105
         return new net.minecraft.network.chat.HoverEvent(net.minecraft.network.chat.HoverEvent.Action.SHOW_TEXT, text);
         //#else
-        //$$ return new net.minecraft.network.chat.HoverEvent.ShowTexttext);
+        //$$ return new net.minecraft.network.chat.HoverEvent.ShowText(text);
         //#endif
     }
 
@@ -43,7 +43,7 @@ public class HoverEventUtils {
             //#if MC < 12105
             net.minecraft.network.chat.HoverEvent.ItemStackInfo itemContent
             //#else
-            //$$ net.minecraft.item.ItemStack itemContent
+            //$$ net.minecraft.world.item.ItemStack itemContent
             //#endif
     ) {
         //#if MC < 12105

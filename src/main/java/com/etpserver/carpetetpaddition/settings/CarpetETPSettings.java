@@ -72,8 +72,10 @@ public class CarpetETPSettings {
     @Rule(categories = {ETP, CREATIVE})
     public static boolean testMode = false;
 
+    //#if MC < 12109
     @Rule(categories = {ETP, SURVIVAL})
     public static boolean spectatorLeashBreak = false;
+    //#endif
 
 
     @Rule(

@@ -21,27 +21,29 @@
 package com.etpserver.carpetetpaddition.mixins.rule.giftsToHeroCD;
 
 import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
-import net.minecraft.entity.ai.brain.task.GiveGiftsToHeroTask;
-import net.minecraft.entity.passive.VillagerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.Text;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.ai.behavior.GiveGiftToHero;
+import net.minecraft.world.entity.npc.Villager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(GiveGiftsToHeroTask.class)
+@Mixin(GiveGiftToHero.class)
 public class GiveGiftsToHeroTaskMixin {
-    @Shadow private int ticksLeft;
+
+    @Shadow
+    private int timeUntilNextGift;
 
     @Inject(
-            method = "shouldRun(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/passive/VillagerEntity;)Z",
+            method = "checkExtraStartConditions(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/npc/Villager;)Z",
             at = @At("RETURN")
     )
-    private void shouldRun(ServerWorld serverWorld, VillagerEntity villagerEntity, CallbackInfoReturnable<Boolean> cir) {
+    private void shouldRun(ServerLevel serverWorld, Villager villagerEntity, CallbackInfoReturnable<Boolean> cir) {
         if (CarpetETPSettings.villagerGiftsToHeroCD){
-            villagerEntity.setCustomName(Text.of(String.valueOf(ticksLeft)));
+            villagerEntity.setCustomName(Component.nullToEmpty(String.valueOf(timeUntilNextGift)));
             villagerEntity.setCustomNameVisible(true);
         }
     }

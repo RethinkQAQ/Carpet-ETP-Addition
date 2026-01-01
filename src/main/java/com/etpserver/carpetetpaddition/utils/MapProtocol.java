@@ -23,8 +23,8 @@ package com.etpserver.carpetetpaddition.utils;
 import com.etpserver.carpetetpaddition.network.WorldInfoPayload;
 import com.etpserver.carpetetpaddition.network.XaeroMapPayload;
 import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -33,20 +33,20 @@ public class MapProtocol {
     public static final String XAERO_WORLD_MAP = "xaeroworldmap";
     public static final String XAERO_MINI_MAP = "xaerominimap";
 
-    public static final Identifier WORLD_KEY = idWorld("main");
-    public static final Identifier MINI_KEY = idMini("main");
+    public static final ResourceLocation WORLD_KEY = idWorld("main");
+    public static final ResourceLocation MINI_KEY = idMini("main");
 
     @Contract("_ -> new")
-    public static @NotNull Identifier idWorld(String path) {
-        return Identifier.of(XAERO_WORLD_MAP, path);
+    public static @NotNull ResourceLocation idWorld(String path) {
+        return ResourceLocation.fromNamespaceAndPath(XAERO_WORLD_MAP, path);
     }
 
     @Contract("_ -> new")
-    public static @NotNull Identifier idMini(String path) {
-        return Identifier.of(XAERO_MINI_MAP, path);
+    public static @NotNull ResourceLocation idMini(String path) {
+        return ResourceLocation.fromNamespaceAndPath(XAERO_MINI_MAP, path);
     }
 
-    public static void onSendWorldInfo(@NotNull ServerPlayerEntity player) {
+    public static void onSendWorldInfo(@NotNull ServerPlayer player) {
         ServerPlayNetworking.send(player, new XaeroMapPayload<>(WORLD_KEY));
         ServerPlayNetworking.send(player, new XaeroMapPayload<>(MINI_KEY));
         ServerPlayNetworking.send(player, new WorldInfoPayload<>(CarpetETPSettings.xaeroMapName));

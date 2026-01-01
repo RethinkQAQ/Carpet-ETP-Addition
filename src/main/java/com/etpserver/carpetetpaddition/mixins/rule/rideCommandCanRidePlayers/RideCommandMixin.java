@@ -23,19 +23,19 @@ package com.etpserver.carpetetpaddition.mixins.rule.rideCommandCanRidePlayers;
 import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.server.command.RideCommand;
+import net.minecraft.server.commands.RideCommand;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(RideCommand.class)
 public class RideCommandMixin {
     @WrapOperation(
-            method = "executeMount",
+            method = "mount",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/entity/Entity;getType()Lnet/minecraft/entity/EntityType;"
+                    target = "Lnet/minecraft/world/entity/Entity;getType()Lnet/minecraft/world/entity/EntityType;"
             )
     )
     private static EntityType<?> canRidePlayers(Entity entity, Operation<EntityType<?>> original) {

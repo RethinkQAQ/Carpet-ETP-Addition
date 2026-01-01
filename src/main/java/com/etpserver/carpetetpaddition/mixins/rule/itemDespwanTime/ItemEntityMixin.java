@@ -25,20 +25,17 @@ import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
 import com.llamalad7.mixinextras.expression.Definition;
 import com.llamalad7.mixinextras.expression.Expression;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import net.minecraft.entity.ItemEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(ItemEntity.class)
+@Mixin(net.minecraft.world.entity.item.ItemEntity.class)
 public class ItemEntityMixin {
     @Shadow
-    private int itemAge;
+    private int age;
 
-    @Definition(id = "itemAge", field = "Lnet/minecraft/entity/ItemEntity;itemAge:I")
-    @Expression("this.itemAge >= 6000")
+    @Definition(id = "age", field = "Lnet/minecraft/world/entity/item/ItemEntity;age:I")
+    @Expression("this.age >= 6000")
     @ModifyExpressionValue(
             method = "tick",
             at = @At(
@@ -49,7 +46,7 @@ public class ItemEntityMixin {
         if (!CarpetETPSettings.itemDespawnTime.equals("6000") && !CarpetETPSettings.itemDespawnTime.equals("never")) {
             try {
                 int despawnTime = Integer.parseInt(CarpetETPSettings.itemDespawnTime);
-                return this.itemAge >= despawnTime;
+                return this.age >= despawnTime;
             } catch (NumberFormatException e) {
                 CarpetETP.LOGGER.error("Invalid item despawn time", e);
             }
@@ -58,8 +55,8 @@ public class ItemEntityMixin {
     }
 
 
-    @Definition(id = "itemAge", field = "Lnet/minecraft/entity/ItemEntity;itemAge:I")
-    @Expression("this.itemAge != -32768")
+    @Definition(id = "age", field = "Lnet/minecraft/world/entity/item/ItemEntity;age:I")
+    @Expression("this.age != -32768")
     @ModifyExpressionValue(
             method = "tick",
             at = @At(

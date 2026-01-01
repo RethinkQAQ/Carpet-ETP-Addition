@@ -20,28 +20,29 @@
 
 package com.etpserver.carpetetpaddition.network;
 
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.network.codec.PacketCodec;
-import net.minecraft.network.packet.CustomPayload;
-import net.minecraft.util.Identifier;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
-public class WorldInfoPayload<T extends WorldInfoPayload<T>> implements CustomPayload {
+public class WorldInfoPayload<T extends WorldInfoPayload<T>> implements CustomPacketPayload {
 
     public final String worldID;
 
-    public static final Identifier WORLD_INFO_PACKET_ID = Identifier.of("worldinfo:world_id");
+    public static final ResourceLocation WORLD_INFO_PACKET_ID = ResourceLocation.parse("worldinfo:world_id");
 
-    public static final PacketCodec<PacketByteBuf, WorldInfoPayload<?>> CODEC = PacketCodec.of(WorldInfoPayload::write, WorldInfoPayload::new);
+    public static final StreamCodec<FriendlyByteBuf, WorldInfoPayload<?>> CODEC = StreamCodec.ofMember(WorldInfoPayload::write, WorldInfoPayload::new);
 
     public WorldInfoPayload(String worldID) {
         this.worldID = worldID;
     }
 
-    public WorldInfoPayload(PacketByteBuf buf) {
-        this.worldID = buf.readString(32767);
+    public WorldInfoPayload(FriendlyByteBuf buf) {
+        this.worldID = buf.readUtf(32767);
     }
 
-    private void write(PacketByteBuf buf) {
+    private void write(FriendlyByteBuf buf) {
         if (worldID != null) {
             buf.writeByte(0);
             buf.writeByte(42);
@@ -51,7 +52,7 @@ public class WorldInfoPayload<T extends WorldInfoPayload<T>> implements CustomPa
     }
 
     @Override
-    public Id<? extends CustomPayload> getId() {
-        return new Id<>(WORLD_INFO_PACKET_ID);
+    public @NotNull Type<? extends CustomPacketPayload> type() {
+        return new Type<>(WORLD_INFO_PACKET_ID);
     }
 }

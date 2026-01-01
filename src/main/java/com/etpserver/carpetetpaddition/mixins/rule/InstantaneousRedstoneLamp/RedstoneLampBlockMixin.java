@@ -21,11 +21,11 @@
 package com.etpserver.carpetetpaddition.mixins.rule.InstantaneousRedstoneLamp;
 
 import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.RedstoneLampBlock;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RedstoneLampBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -34,19 +34,19 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 //$$ import net.minecraft.world.block.WireOrientation;
 //#endif
 
-import static net.minecraft.block.RedstoneLampBlock.LIT;
+import static net.minecraft.world.level.block.RedstoneLampBlock.LIT;
 
 @Mixin(RedstoneLampBlock.class)
 public class RedstoneLampBlockMixin {
 
     @Inject(
-            method = "neighborUpdate",
+            method = "neighborChanged",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/world/World;scheduleBlockTick(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/Block;I)V"
+                    target = "Lnet/minecraft/world/level/Level;scheduleTick(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;I)V"
         ),
             cancellable = true)
-    private void onNeighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock,
+    private void onNeighborUpdate(BlockState state, Level world, BlockPos pos, Block sourceBlock,
                                   //#if MC >= 12103
                                   //$$ WireOrientation wireOrientation,
                                   //#elseif
@@ -55,7 +55,7 @@ public class RedstoneLampBlockMixin {
                                   boolean notify, CallbackInfo ci) {
         if(CarpetETPSettings.InstantaneousRedstoneLamp) {
             ci.cancel();
-            world.setBlockState(pos, state.cycle(LIT),Block.NOTIFY_LISTENERS);
+            world.setBlock(pos, state.cycle(LIT),Block.UPDATE_CLIENTS);
         }
     }
 }

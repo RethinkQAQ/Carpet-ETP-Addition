@@ -37,9 +37,6 @@ public class CarpetETPSettings {
     public static boolean redStoneWireCanRunOnTrapDoor = false;
 
     @Rule(categories = ETP)
-    public static boolean unExternPistonCanBeCompare = false;
-
-    @Rule(categories = ETP)
     public static boolean CrafterCanQC = false;
 
     @Rule(categories = ETP)
@@ -78,8 +75,6 @@ public class CarpetETPSettings {
     @Rule(categories = {ETP, SURVIVAL})
     public static boolean spectatorLeashBreak = false;
 
-    @Rule(categories = {ETP, CREATIVE})
-    public static boolean commandBlockFeedbackEnhanced = false;
 
     @Rule(
             categories = {ETP, CREATIVE},

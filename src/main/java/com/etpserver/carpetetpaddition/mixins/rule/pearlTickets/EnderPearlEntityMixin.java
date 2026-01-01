@@ -21,20 +21,20 @@
 package com.etpserver.carpetetpaddition.mixins.rule.pearlTickets;
 
 import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.projectile.thrown.EnderPearlEntity;
-import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.server.world.ChunkLevelType;
-import net.minecraft.server.world.ChunkTicketType;
-import net.minecraft.server.world.ServerChunkManager;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
-import net.minecraft.world.chunk.WorldChunk;
-import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.FullChunkStatus;
+import net.minecraft.server.level.ServerChunkCache;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.TicketType;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.entity.projectile.ThrownEnderpearl;
+import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.chunk.LevelChunk;
+import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -45,31 +45,31 @@ import java.util.Comparator;
 import java.util.concurrent.ExecutionException;
 
 // 从PearlTicket 移植
-@Mixin(EnderPearlEntity.class)
-public abstract class EnderPearlEntityMixin extends ThrownItemEntity {
+@Mixin(ThrownEnderpearl.class)
+public abstract class EnderPearlEntityMixin extends ThrowableItemProjectile {
 
     @Unique
-    private static final ChunkTicketType<ChunkPos> ENDER_PEARL_TICKET =
-            ChunkTicketType.create("ender_pearl", Comparator.comparingLong(ChunkPos::toLong), 2);
+    private static final TicketType<ChunkPos> ENDER_PEARL_TICKET =
+            TicketType.create("ender_pearl", Comparator.comparingLong(ChunkPos::toLong), 2);
 
     @Unique
     private boolean sync = true;
     @Unique
-    private Vec3d realPos = null;
+    private Vec3 realPos = null;
     @Unique
-    private Vec3d realVelocity = null;
+    private Vec3 realVelocity = null;
 
-    protected EnderPearlEntityMixin(EntityType<? extends ThrownItemEntity> entityType, World world) {
+    protected EnderPearlEntityMixin(EntityType<? extends ThrowableItemProjectile> entityType, Level world) {
         super(entityType, world);
     }
 
     @Unique
-    private static boolean isEntityTickingChunk(WorldChunk chunk) {
-        return (chunk != null && chunk.getLevelType() == ChunkLevelType.ENTITY_TICKING);
+    private static boolean isEntityTickingChunk(LevelChunk chunk) {
+        return (chunk != null && chunk.getFullStatus() == FullChunkStatus.ENTITY_TICKING);
     }
 
     @Unique
-    private static int getHighestMotionBlockingY(NbtCompound nbtCompound) {
+    private static int getHighestMotionBlockingY(CompoundTag nbtCompound) {
         int highestY = Integer.MIN_VALUE;
         if (nbtCompound != null) {
             for (long element : nbtCompound.getCompound("Heightmaps").getLongArray("MOTION_BLOCKING")) {
@@ -89,11 +89,11 @@ public abstract class EnderPearlEntityMixin extends ThrownItemEntity {
     )
     private void skippyChunkLoading(CallbackInfo ci) {
         if (CarpetETPSettings.pearlTickets){
-            World world = this.getEntityWorld();
+            Level world = this.getCommandSenderWorld();
 
-            if (world instanceof ServerWorld) {
-                Vec3d currPos = this.getPos().add(Vec3d.ZERO);
-                Vec3d currVelocity = this.getVelocity().add(Vec3d.ZERO);
+            if (world instanceof ServerLevel) {
+                Vec3 currPos = this.position().add(Vec3.ZERO);
+                Vec3 currVelocity = this.getDeltaMovement().add(Vec3.ZERO);
 
                 if (this.sync) {
                     this.realPos = currPos;
@@ -101,20 +101,20 @@ public abstract class EnderPearlEntityMixin extends ThrownItemEntity {
                 }
 
                 // next pos
-                Vec3d nextPos = this.realPos.add(this.realVelocity);
-                Vec3d nextVelocity = this.realVelocity.multiply(0.99F).subtract(0, this.getGravity(), 0);
+                Vec3 nextPos = this.realPos.add(this.realVelocity);
+                Vec3 nextVelocity = this.realVelocity.scale(0.99F).subtract(0, this.getGravity(), 0);
 
                 ChunkPos currChunkPos = new ChunkPos(new BlockPos((int) currPos.x, (int) currPos.y, (int) currPos.z));
                 ChunkPos nextChunkPos = new ChunkPos(new BlockPos((int) nextPos.x, (int) nextPos.y, (int) nextPos.z));
 
-                ServerChunkManager serverChunkManager = ((ServerWorld) world).getChunkManager();
+                ServerChunkCache serverChunkManager = ((ServerLevel) world).getChunkSource();
 
-                if (!this.sync || !isEntityTickingChunk(serverChunkManager.getWorldChunk(nextChunkPos.x, nextChunkPos.z))) {
-                    NbtCompound nbtCompound1;
-                    NbtCompound nbtCompound2;
+                if (!this.sync || !isEntityTickingChunk(serverChunkManager.getChunkNow(nextChunkPos.x, nextChunkPos.z))) {
+                    CompoundTag nbtCompound1;
+                    CompoundTag nbtCompound2;
                     try {
-                        nbtCompound1 = serverChunkManager.chunkLoadingManager.getNbt(currChunkPos).get().orElse(null);
-                        nbtCompound2 = serverChunkManager.chunkLoadingManager.getNbt(nextChunkPos).get().orElse(null);
+                        nbtCompound1 = serverChunkManager.chunkMap.read(currChunkPos).get().orElse(null);
+                        nbtCompound2 = serverChunkManager.chunkMap.read(nextChunkPos).get().orElse(null);
                     } catch (InterruptedException | ExecutionException e) {
                         throw new RuntimeException("NbtCompound Exception");
                     }
@@ -122,21 +122,21 @@ public abstract class EnderPearlEntityMixin extends ThrownItemEntity {
                     int highestMotionBlockingY = Integer.max(getHighestMotionBlockingY(nbtCompound1), getHighestMotionBlockingY(nbtCompound2));
 
                     // compatible with none-zero minimum y value dimension
-                    DimensionType worldDimensionType = world.getDimension();
+                    DimensionType worldDimensionType = world.dimensionType();
                     highestMotionBlockingY += worldDimensionType.minY();
 
                     // skip chunk loading
                     if (this.realPos.y > highestMotionBlockingY && nextPos.y > highestMotionBlockingY && nextPos.y + nextVelocity.y > highestMotionBlockingY) {
                         // /stay put
-                        serverChunkManager.addTicket(ENDER_PEARL_TICKET, currChunkPos, 2, currChunkPos);
-                        this.setVelocity(Vec3d.ZERO);
-                        this.setPosition(currPos);
+                        serverChunkManager.addRegionTicket(ENDER_PEARL_TICKET, currChunkPos, 2, currChunkPos);
+                        this.setDeltaMovement(Vec3.ZERO);
+                        this.setPos(currPos);
                         this.sync = false;
                     } else {
                         // move
-                        serverChunkManager.addTicket(ENDER_PEARL_TICKET, nextChunkPos, 2, nextChunkPos);
-                        this.setVelocity(this.realVelocity);
-                        this.setPosition(this.realPos);
+                        serverChunkManager.addRegionTicket(ENDER_PEARL_TICKET, nextChunkPos, 2, nextChunkPos);
+                        this.setDeltaMovement(this.realVelocity);
+                        this.setPos(this.realPos);
                         this.sync = true;
                     }
                 }

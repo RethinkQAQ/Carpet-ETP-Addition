@@ -21,7 +21,7 @@
 package com.etpserver.carpetetpaddition;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.Minecraft;
 
 import java.util.logging.Logger;
 
@@ -33,7 +33,7 @@ public class CarpetETPClient implements ClientModInitializer {
         return INSTANCE;
     }
 
-    public void onClientTick(MinecraftClient client) {
+    public void onClientTick(Minecraft client) {
     }
 
     @Override

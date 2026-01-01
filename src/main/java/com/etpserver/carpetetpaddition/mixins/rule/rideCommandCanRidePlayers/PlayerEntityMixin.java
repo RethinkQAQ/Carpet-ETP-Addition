@@ -20,29 +20,27 @@
 
 package com.etpserver.carpetetpaddition.mixins.rule.rideCommandCanRidePlayers;
 
-import net.minecraft.entity.EntityPose;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.math.Box;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 
-@Mixin(PlayerEntity.class)
+@Mixin(Player.class)
 public class PlayerEntityMixin {
 
     @SuppressWarnings("UnreachableCode")
     @Inject(
-            method = "tickRiding",
+            method = "rideTick",
             at = @At("HEAD")
     )
     private void reduceBoundingBox(CallbackInfo ci) {
-        PlayerEntity player = (PlayerEntity)(Object)this;
-        Box box = player.getBoundingBox();
-        if (player.getVehicle() != null && player.getVehicle() instanceof ServerPlayerEntity) {
-            player.getDimensions(EntityPose.SITTING).scaled(0.9f);
+        Player player = (Player)(Object)this;
+        if (player.getVehicle() != null && player.getVehicle() instanceof ServerPlayer) {
+            player.getDimensions(Pose.SITTING).scale(0.9f);
         }
     }
 }

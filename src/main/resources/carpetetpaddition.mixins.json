@@ -8,8 +8,6 @@
   "compatibilityLevel": "{{COMPATIBILITY_LEVEL}}",
   "mixins": [
     "carpet.SettingManagerMixin",
-    "rule.ComparatorBlockMixin",
-    "rule.commandBlockFeedbackEnhanced.ServerCommandSourceMixin",
     "rule.crafterCanQC.CrafterBlockMixin",
     "rule.disableCreatePortal.NetherPortalBlockMixin",
     "rule.disableEggSpawnChicken.EggEntityMixin",

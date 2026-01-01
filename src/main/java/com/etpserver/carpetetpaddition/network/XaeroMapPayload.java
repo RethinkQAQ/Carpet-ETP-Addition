@@ -21,29 +21,29 @@
 package com.etpserver.carpetetpaddition.network;
 
 import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.network.codec.PacketCodec;
-import net.minecraft.network.packet.CustomPayload;
-import net.minecraft.util.Identifier;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.zip.CRC32;
 
 
-public class XaeroMapPayload<T extends XaeroMapPayload<T>> implements CustomPayload {
+public class XaeroMapPayload<T extends XaeroMapPayload<T>> implements CustomPacketPayload {
 
-    private final Identifier id;
+    private final ResourceLocation id;
 
-    public static final PacketCodec<PacketByteBuf, XaeroMapPayload<?>> CODEC = PacketCodec.of(XaeroMapPayload::write, XaeroMapPayload::new);
+    public static final StreamCodec<FriendlyByteBuf, XaeroMapPayload<?>> CODEC = StreamCodec.ofMember(XaeroMapPayload::write, XaeroMapPayload::new);
 
-    public XaeroMapPayload(Identifier id) {
+    public XaeroMapPayload(ResourceLocation id) {
         this.id = id;
     }
 
-    public XaeroMapPayload(PacketByteBuf buf) {
-        this(buf.readIdentifier());
+    public XaeroMapPayload(FriendlyByteBuf buf) {
+        this(buf.readResourceLocation());
     }
 
-    public void write(PacketByteBuf buf) {
+    public void write(FriendlyByteBuf buf) {
         CRC32 crc32 = new CRC32();
         byte[] data = CarpetETPSettings.xaeroMapName.getBytes();
         crc32.update(data, 0, data.length);
@@ -53,7 +53,7 @@ public class XaeroMapPayload<T extends XaeroMapPayload<T>> implements CustomPayl
 
 
     @Override
-    public Id<? extends XaeroMapPayload<T>> getId() {
-        return new CustomPayload.Id<>(id);
+    public Type<? extends XaeroMapPayload<T>> type() {
+        return new CustomPacketPayload.Type<>(id);
     }
 }

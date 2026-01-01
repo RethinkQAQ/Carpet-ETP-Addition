@@ -21,13 +21,13 @@
 package com.etpserver.carpetetpaddition.mixins.rule.disableCreatePortal;
 
 import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
-import net.minecraft.block.NetherPortalBlock;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.TeleportTarget;
-import net.minecraft.world.border.WorldBorder;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.block.NetherPortalBlock;
+import net.minecraft.world.level.border.WorldBorder;
+import net.minecraft.world.level.portal.DimensionTransition;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -37,16 +37,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class NetherPortalBlockMixin {
 
     @Inject(
-            method = "getOrCreateExitPortalTarget",
+            method = "getExitPortal",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/world/dimension/PortalForcer;createPortal(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/math/Direction$Axis;)Ljava/util/Optional;"
+                    target = "Lnet/minecraft/world/level/portal/PortalForcer;createPortal(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction$Axis;)Ljava/util/Optional;"
             ),
             cancellable = true)
-    private void disableEntityCreatePortal(ServerWorld world, Entity entity, BlockPos pos, BlockPos scaledPos, boolean inNether, WorldBorder worldBorder, CallbackInfoReturnable<TeleportTarget> cir) {
+    private void disableEntityCreatePortal(ServerLevel serverLevel, Entity entity, BlockPos blockPos, BlockPos blockPos2, boolean bl, WorldBorder worldBorder, CallbackInfoReturnable<DimensionTransition> cir) {
         if (!CarpetETPSettings.disableCreatePortal.equals("OFF")) {
             if (("ALL".equals(CarpetETPSettings.disableCreatePortal) ||
-                    ("NonPlayer".equals(CarpetETPSettings.disableCreatePortal) && !(entity instanceof PlayerEntity)))) {
+                    ("NonPlayer".equals(CarpetETPSettings.disableCreatePortal) && !(entity instanceof Player)))) {
                 cir.setReturnValue(null);
             }
         }

@@ -28,7 +28,7 @@ import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
 import com.etpserver.carpetetpaddition.translations.CarpetETPAdditionTranslations;
 import com.etpserver.carpetetpaddition.utils.MapProtocol;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
-import net.minecraft.network.packet.CustomPayload;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.MinecraftServer;
 
 import org.apache.logging.log4j.Logger;
@@ -55,9 +55,9 @@ public class CarpetETPServer implements CarpetExtension{
     public static void init() {
         CarpetServer.manageExtension(new CarpetETPServer());
         // Register XaeroMap payload
-        PayloadTypeRegistry.playS2C().register(new CustomPayload.Id<>(MapProtocol.WORLD_KEY), XaeroMapPayload.CODEC);
-        PayloadTypeRegistry.playS2C().register(new CustomPayload.Id<>(MapProtocol.MINI_KEY), XaeroMapPayload.CODEC);
-        PayloadTypeRegistry.playS2C().register(new CustomPayload.Id<>(WorldInfoPayload.WORLD_INFO_PACKET_ID), WorldInfoPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(new CustomPacketPayload.Type<>(MapProtocol.WORLD_KEY), XaeroMapPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(new CustomPacketPayload.Type<>(MapProtocol.MINI_KEY), XaeroMapPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(new CustomPacketPayload.Type<>(WorldInfoPayload.WORLD_INFO_PACKET_ID), WorldInfoPayload.CODEC);
     }
 
     @Override

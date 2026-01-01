@@ -20,13 +20,9 @@
 
 package com.etpserver.carpetetpaddition.mixins.rule.rideCommandCanRidePlayers;
 
-import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
-import net.minecraft.entity.Entity;
-import net.minecraft.network.packet.s2c.play.EntityPassengersSetS2CPacket;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.network.protocol.game.ClientboundSetPassengersPacket;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -44,9 +40,9 @@ public abstract class EntityMixin{
 
     @Inject(
             //#if MC >= 12109
-            //$$ method = "startRiding(Lnet/minecraft/entity/Entity;ZZ)Z",
+            //$$ method = "startRiding(Lnet/minecraft/world/entity/Entity;ZZ)Z",
             //#else
-            method = "startRiding(Lnet/minecraft/entity/Entity;Z)Z",
+            method = "startRiding(Lnet/minecraft/world/entity/Entity;Z)Z",
             //#endif
             at = @At(
                     value = "RETURN"
@@ -58,8 +54,8 @@ public abstract class EntityMixin{
                                 //#endif
                                 CallbackInfoReturnable<Boolean> cir)
     {
-        if (this.vehicle != null && this.vehicle instanceof ServerPlayerEntity &&!this.vehicle.getWorld().isClient()) {
-                ((ServerPlayerEntity) vehicle).networkHandler.sendPacket(new EntityPassengersSetS2CPacket(vehicle));
+        if (this.vehicle != null && this.vehicle instanceof ServerPlayer &&!this.vehicle.level().isClientSide()) {
+                ((ServerPlayer) vehicle).connection.send(new ClientboundSetPassengersPacket(vehicle));
         }
     }
 
@@ -70,8 +66,8 @@ public abstract class EntityMixin{
                     value = "RETURN")
     )
     private void sendDismountPacket(Entity passenger, CallbackInfo ci) {
-        if ((Entity)(Object)this instanceof ServerPlayerEntity player){
-            player.networkHandler.sendPacket(new EntityPassengersSetS2CPacket(player));
+        if ((Entity)(Object)this instanceof ServerPlayer player){
+            player.connection.send(new ClientboundSetPassengersPacket(player));
         }
     }
 }

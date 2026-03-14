@@ -20,6 +20,10 @@ repositories {
 	maven {
 		url 'https://masa.dy.fi/maven'
 	}
+	maven {
+		name = "Modrinth"
+		url = "https://api.modrinth.com/maven"
+	}
 }
 
 // https://github.com/FabricMC/fabric-loader/issues/783
@@ -50,6 +54,9 @@ dependencies {
 	// dependencies
 	include(modImplementation("me.fallenbreath:conditional-mixin-fabric:${project.conditionalmixin_version}"))
 	include(annotationProcessor(implementation("io.github.llamalad7:mixinextras-fabric:${project.mixinextras_version}")))
+
+	// runTime
+	modCompileOnly("maven.modrinth:axiom:5.3.0-fabric,${project.minecraft_version}")
 }
 
 String MIXIN_CONFIG_PATH = 'carpetetpaddition.mixins.json'

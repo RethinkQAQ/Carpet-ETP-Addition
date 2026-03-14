@@ -30,5 +30,7 @@
   "carpet.rule.spectatorLeashBreak.name": "旁观者拴绳断裂",
   "carpet.rule.spectatorLeashBreak.desc": "防止观察者飞船这一种超模行为",
   "carpet.rule.itemDespawnTime.name": "物品消失时间",
-  "carpet.rule.itemDespawnTime.desc": "设置物品的消失的时间(gt)\n '6000' 游戏默认消失时长\n 'never' 物品永不消失"
+  "carpet.rule.itemDespawnTime.desc": "设置物品的消失的时间(gt)\n '6000' 游戏默认消失时长\n 'never' 物品永不消失",
+  "carpet.rule.axiomDontKickPlayer.name": "禁止Axiom踢玩家",
+  "carpet.rule.axiomDontKickPlayer.desc": "当Axiom检测到玩家的Axiom版本不匹配或者使用跨版本时, 会踢掉玩家, 此规则可以禁止该行为, 但是无法使用 Axiom"
 }

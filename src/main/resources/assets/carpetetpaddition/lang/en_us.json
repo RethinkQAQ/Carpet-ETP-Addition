@@ -23,5 +23,7 @@
   "carpet.rule.spectatorLeashBreak.name": "spectatorLeashBreak",
   "carpet.rule.spectatorLeashBreak.desc": "none",
   "carpet.rule.itemDespawnTime.name": "itemDespawnTime",
-  "carpet.rule.itemDespawnTime.desc": "none"
+  "carpet.rule.itemDespawnTime.desc": "none",
+  "carpet.rule.axiomDontKickPlayer.name": "axiomDontKickPlayer",
+  "carpet.rule.axiomDontKickPlayer.desc": "none"
 }

@@ -84,4 +84,7 @@ public class CarpetETPSettings {
             options = {"6000", "12000", "never"}
     )
     public static String itemDespawnTime = "6000";
+
+    @Rule(categories = {ETP})
+    public static boolean axiomDontKickPlayer = false;
 }

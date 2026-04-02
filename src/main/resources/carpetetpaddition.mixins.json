@@ -8,6 +8,7 @@
   "compatibilityLevel": "{{COMPATIBILITY_LEVEL}}",
   "mixins": [
     "carpet.SettingManagerMixin",
+    "rule.entityIdSuppressorSimulator.chunkMapMixin",
     "rule.axiomDontKickPlayer.AxiomServerboundHelloMixin",
     "rule.crafterCanQC.CrafterBlockMixin",
     "rule.disableCreatePortal.NetherPortalBlockMixin",

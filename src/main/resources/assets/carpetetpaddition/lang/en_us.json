@@ -25,5 +25,7 @@
   "carpet.rule.itemDespawnTime.name": "itemDespawnTime",
   "carpet.rule.itemDespawnTime.desc": "none",
   "carpet.rule.axiomDontKickPlayer.name": "axiomDontKickPlayer",
-  "carpet.rule.axiomDontKickPlayer.desc": "none"
+  "carpet.rule.axiomDontKickPlayer.desc": "none",
+  "carpet.rule.entityIdSuppressorSimulator.name": "entityIdSuppressorSimulator",
+  "carpet.rule.entityIdSuppressorSimulator.desc": "none"
 }

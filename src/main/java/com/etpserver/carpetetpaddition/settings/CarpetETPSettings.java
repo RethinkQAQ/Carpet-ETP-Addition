@@ -87,4 +87,7 @@ public class CarpetETPSettings {
 
     @Rule(categories = {ETP})
     public static boolean axiomDontKickPlayer = false;
+
+    @Rule(categories = {ETP})
+    public static boolean entityIdSuppressorSimulator = false;
 }

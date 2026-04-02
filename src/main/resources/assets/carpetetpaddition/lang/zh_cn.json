@@ -32,5 +32,7 @@
   "carpet.rule.itemDespawnTime.name": "物品消失时间",
   "carpet.rule.itemDespawnTime.desc": "设置物品的消失的时间(gt)\n '6000' 游戏默认消失时长\n 'never' 物品永不消失",
   "carpet.rule.axiomDontKickPlayer.name": "禁止Axiom踢玩家",
-  "carpet.rule.axiomDontKickPlayer.desc": "当Axiom检测到玩家的Axiom版本不匹配或者使用跨版本时, 会踢掉玩家, 此规则可以禁止该行为, 但是无法使用 Axiom"
+  "carpet.rule.axiomDontKickPlayer.desc": "当Axiom检测到玩家的Axiom版本不匹配或者使用跨版本时, 会踢掉玩家, 此规则可以禁止该行为, 但是无法使用 Axiom",
+  "carpet.rule.entityIdSuppressorSimulator.name": "实体ID抑制模拟器",
+  "carpet.rule.entityIdSuppressorSimulator.desc": "服务器产生实体会抛出异常, 以此模拟实体ID抑制器的效果"
 }

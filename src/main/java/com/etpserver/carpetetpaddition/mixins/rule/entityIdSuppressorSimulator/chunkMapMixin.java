@@ -33,7 +33,9 @@ public class chunkMapMixin {
             method = "addEntity",
             at = @At(
                     value = "INVOKE",
-                    target = "Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;containsKey(I)Z")
+                    target = "Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;containsKey(I)Z"
+            ),
+            remap = false
     )
     private boolean suppressEntityId(boolean original) {
         return CarpetETPSettings.entityIdSuppressorSimulator || original;

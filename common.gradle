@@ -3,7 +3,6 @@ final boolean unobfuscated = mcVersion >= 26_00_00
 
 apply plugin: 'maven-publish'
 apply plugin: 'com.github.hierynomus.license'
-apply plugin: 'com.gradleup.shadow'
 apply plugin: unobfuscated ? 'net.fabricmc.fabric-loom' : 'net.fabricmc.fabric-loom-remap'
 apply plugin: 'com.replaymod.preprocess'
 apply plugin: 'me.fallenbreath.yamlang'
@@ -11,24 +10,29 @@ apply plugin: 'me.fallenbreath.yamlang'
 repositories {
 	maven {
 		url = 'https://maven.parchmentmc.org'
+		content { includeGroup('org.parchmentmc.data') }
+	}
+	maven {
+		url = 'https://masa.dy.fi/maven'
+		content { includeModule('carpet', 'fabric-carpet') }
 	}
 	maven {
 		url = 'https://jitpack.io'
+		content { includeGroupAndSubgroups('com.github') }
 	}
 	maven {
 		url = 'https://maven.fallenbreath.me/releases'
+		content { includeGroup('me.fallenbreath') }
 	}
 	maven {
-		url 'https://masa.dy.fi/maven'
-	}
-	maven {
-		name = "Modrinth"
-		url = "https://api.modrinth.com/maven"
+		url = 'https://api.modrinth.com/maven'
+		content { includeGroup('maven.modrinth') }
 	}
 }
 
 dependencies {
 	def processDependency = { dep ->
+		// https://github.com/FabricMC/fabric-loader/issues/783
 		if (dep instanceof ModuleDependency) {
 			if (!(dep.group == 'net.fabricmc' && dep.name == 'fabric-loader')) {
 				dep.exclude group: 'net.fabricmc', module: 'fabric-loader'
@@ -85,9 +89,7 @@ if (mcVersion >= 260000) {
 JavaVersion MIXIN_COMPATIBILITY_LEVEL = JAVA_COMPATIBILITY
 
 loom {
-	accessWidenerPath = file("carpetetpaddition.accesswidener")
-
-	def commonVmArgs = ['-Dmixin.debug.export=true', '-Dmixin.debug.countInjections=false'/*, '--sun-misc-unsafe-memory-access=allow'*/]
+	def commonVmArgs = ['-Dmixin.debug.export=true', '-Dmixin.debug.countInjections=false']
 	runConfigs.configureEach {
 		// to make sure it generates all "Minecraft Client (:subproject_name)" applications
 		ideConfigGenerated = true
@@ -138,20 +140,17 @@ version = fullProjectVersion
 // if IDEA complains about "Cannot resolve resource filtering of MatchingCopyAction" and you want to know why
 processResources {
 	from "carpetetpaddition.accesswidener"
-	inputs.property "id", project.mod_id
-	inputs.property "name", project.mod_name
-	inputs.property "version", fullModVersion
-	inputs.property "minecraft_dependency", project.minecraft_dependency
+	def modProperties = [
+			"id"                  : project.mod_id,
+			"name"                : project.mod_name,
+			"version"             : fullModVersion,
+			"carpet_dependency"			  : project.carpet_dependency,
+			"minecraft_dependency": project.minecraft_dependency,
+	]
+	inputs.properties(modProperties)
 
 	filesMatching("fabric.mod.json") {
-		def valueMap = [
-				"id": project.mod_id,
-				"name": project.mod_name,
-				"version": fullModVersion,
-				"minecraft_dependency": project.minecraft_dependency,
-				"carpet_dependency": project.carpet_dependency,
-		]
-		expand valueMap
+		expand modProperties
 	}
 
 	filesMatching(MIXIN_CONFIG_PATH) {
@@ -188,8 +187,9 @@ java {
 }
 
 jar {
+	inputs.property "archives_base_name", project.archives_base_name
 	from(rootProject.file('LICENSE')) {
-		rename { "${it}_${project.archives_base_name}" }
+		rename { "${it}_${inputs.properties.archives_base_name}" }
 	}
 }
 

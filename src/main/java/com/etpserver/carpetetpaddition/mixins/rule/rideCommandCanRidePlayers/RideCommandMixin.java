@@ -31,6 +31,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(RideCommand.class)
 public class RideCommandMixin {
+    //#if MC < 26.1
     @WrapOperation(
             method = "mount",
             at = @At(
@@ -41,4 +42,16 @@ public class RideCommandMixin {
     private static EntityType<?> canRidePlayers(Entity entity, Operation<EntityType<?>> original) {
         return CarpetETPSettings.rideCommandCanRidePlayers?  null: original.call(entity);
     }
+    //#else
+    //$$@WrapOperation(
+    //$$        method = "mount",
+    //$$        at = @At(
+    //$$                value = "INVOKE",
+    //$$                target = "Lnet/minecraft/world/entity/Entity;is(Ljava/lang/Object;)Z"
+    //$$        )
+    //$$)
+    //$$private static boolean canRidePlayers(Entity instance, Object o, Operation<Boolean> original) {
+    //$$    return !CarpetETPSettings.rideCommandCanRidePlayers && original.call(instance, o);
+    //$$}
+    //#endif
 }

@@ -42,8 +42,10 @@ public class HoverEventUtils {
     public static net.minecraft.network.chat.HoverEvent showItem(
             //#if MC < 12105
             net.minecraft.network.chat.HoverEvent.ItemStackInfo itemContent
-            //#else
+            //#elseif MC < 26.1
             //$$ net.minecraft.world.item.ItemStack itemContent
+            //#else
+            //$$ net.minecraft.world.item.ItemStackTemplate itemContent
             //#endif
     ) {
         //#if MC < 12105

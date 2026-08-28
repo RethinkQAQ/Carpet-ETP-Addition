@@ -22,12 +22,15 @@ package com.etpserver.carpetetpaddition;
 
 import carpet.CarpetExtension;
 import carpet.CarpetServer;
+import com.etpserver.carpetetpaddition.commands.checkslot.CheckSlotCommand;
+import com.etpserver.carpetetpaddition.commands.checkslot.HighlightManager;
 import com.etpserver.carpetetpaddition.network.WorldInfoPayload;
 import com.etpserver.carpetetpaddition.network.XaeroMapPayload;
 import com.etpserver.carpetetpaddition.settings.CarpetETPSettings;
 import com.etpserver.carpetetpaddition.translations.CarpetETPAdditionTranslations;
 import com.etpserver.carpetetpaddition.utils.MapProtocol;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.MinecraftServer;
 
@@ -54,10 +57,13 @@ public class CarpetETPServer implements CarpetExtension{
 
     public static void init() {
         CarpetServer.manageExtension(new CarpetETPServer());
+        CheckSlotCommand.register();
         // Register XaeroMap payload
-        PayloadTypeRegistry.playS2C().register(new CustomPacketPayload.Type<>(MapProtocol.WORLD_KEY), XaeroMapPayload.CODEC);
-        PayloadTypeRegistry.playS2C().register(new CustomPacketPayload.Type<>(MapProtocol.MINI_KEY), XaeroMapPayload.CODEC);
-        PayloadTypeRegistry.playS2C().register(new CustomPacketPayload.Type<>(WorldInfoPayload.WORLD_INFO_PACKET_ID), WorldInfoPayload.CODEC);
+        if (!FabricLoader.getInstance().isModLoaded("xaerominimap") && !FabricLoader.getInstance().isModLoaded("xaeroworldmap")) {
+            PayloadTypeRegistry.playS2C().register(new CustomPacketPayload.Type<>(MapProtocol.WORLD_KEY), XaeroMapPayload.CODEC);
+            PayloadTypeRegistry.playS2C().register(new CustomPacketPayload.Type<>(MapProtocol.MINI_KEY), XaeroMapPayload.CODEC);
+            PayloadTypeRegistry.playS2C().register(new CustomPacketPayload.Type<>(WorldInfoPayload.WORLD_INFO_PACKET_ID), WorldInfoPayload.CODEC);
+        }
     }
 
     @Override
@@ -69,6 +75,7 @@ public class CarpetETPServer implements CarpetExtension{
     @Override
     public void onServerLoaded(MinecraftServer server){
         minecraftServer = server;
+        HighlightManager.reset();
     }
 
     @Override
